@@ -1,0 +1,67 @@
+******LOCATORS:
+***There are 8 locators:
+1. id
+2. name
+3. className
+4. tagName
+5. linkText
+6. partialLinkText
+
+They are different than the others.
+7. xpath
+8. css
+----------------
+***How to locate elements?
+WebElement elementName = driver.findElement(By.id("id value"));
+EMAIL INPUT ELEMENT
+<input type="email" class="form-control" placeholder="Email" data-test="email" name="session[email]"
+id="session_email">
+* This element has an id
+* This is is unique
+* Then I can use this id to locate the element.
+----------------------------------
+SING IN BUTTON
+<input type="submit" name="commit" value="Sign in" class="btn btn-primary" data-test="submit" data-disable-with="Sign in">
+* There is no unique id
+* But there is a name that I can use
+driver.findElement(By.name("commit"));
+-----------------------------------
+EMAIL ID
+<span class="navbar-text" data-test="current-user">testtechproed@gmail.com</span>
+* There is no unique id
+* There is no unique name
+* There is a unique class
+driver.findElement(By.className("navbar-text"));
+------------------------------------
+ADDRESSES ELEMENT
+<a class="nav-item nav-link" data-test="addresses" href="/addresses">Addresses</a>
+* I cannot use id, name.
+* I can use class
+* I CAN ALSO USE LINKTEXT OR PARTIALLINKTEXT BECAUSE THIS IS A LINK!!!!
+driver.findElement(By.linkText("Addresses"));
+driver.findElement(By.partialLinkText("Addresses"));
+*What is difference between linkText and partialLinkText???
+linkText accepts the full complete text with space and all....
+partialLinkText accepts the full complete text OR PART OF THE TEXT
+Be careful when using partialLinkText cause it may return the wrong element
+
+------------------------------------------------------------
+*****xpath
+There are 2 types of xpath?
+-Absolute -> go from parent to child using / . This is not recommended. Because it can be easily broken
+-Relative -> go straight to any element on the page using //. This is used a lot
+//tag[@attribute='value'];
+EMAIL INPUT:
+<input type="email" class="form-control" placeholder="Email" data-test="email" name="session[email]" id="session_email">
+Locating using relative xpath:
+//input[@id='session_email']
+//input[@type='email']
+-------------------------------------------------------------
+Which locator do you prefer? Why?
+-I prefer to us "id". Because "id" is unique.
+-If there is not id, then I use other locators such as name.
+-If non of the regular locators works, then I write xpath
+-Cause I can write xpath for any element.
+
+What I like about xpath is, I can use index number to select ant element
+-I can also write dynamic xpath such as start-with, ends-with, contains.

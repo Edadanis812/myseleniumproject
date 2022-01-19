@@ -1,0 +1,35 @@
+package com.myfirstproject;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.time.Duration;
+
+public class Day06_IFrameTest2 {
+    WebDriver driver;
+    @Before
+    public void setUp(){
+        System.setProperty("webdriver.chrome.driver","./drivers/chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().window().maximize();
+        driver.get("https://www.amazon.com/");
+    }
+    @Test
+    public void iframeSize(){
+        //How to you find the total number of iframe of a page?
+       //Answer: I use tag name with iframe and get the size.
+    //Go to amazon
+    //print the number of iframe
+        driver.findElements(By.tagName("iframe")).size();
+
+    }
+    @After
+    public void tearDown(){
+        driver.quit();
+    }
+}
